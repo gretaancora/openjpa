@@ -1,0 +1,22 @@
+#esempio di file di ci workflow
+name: CI Pipeline
+
+on: [push, pull_request]  # Esegui CI ad ogni push e PR
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Sistema operativo
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # Clona il repo
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm test
